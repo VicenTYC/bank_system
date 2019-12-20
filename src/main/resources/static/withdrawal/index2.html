@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+    <link href="../assets/fontAwesome/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="../assets/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="../assets/css/lib/mmc-chat.css" rel="stylesheet"/>
+    <link href="../assets/css/lib/sidebar.css" rel="stylesheet">
+    <link href="../assets/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/lib/nixon.css" rel="stylesheet">
+    <link href="../assets/lib/lobipanel/css/lobipanel.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <script src="../jquery-3.3.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#commit").on('click', function () {
+                var uId = $("#uid").val();
+                var uName = $("#uname").val();
+                var uPhone = $("#uphone").val();
+
+                var data = {
+                    "uId": uId,
+                    "uName": uName,
+                    "uPhone": uPhone
+                };
+                $.ajax({
+                    url: "/user/adduser",    //请求的url地址
+                    dataType: "json",   //返回格式为json
+                    async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                    contentType: "application/json",
+                    type: "POST",   //请求方式
+                    data: JSON.stringify(data),    //参数值
+                    beforeSend: function () {
+                        //请求前的处理
+                    },
+                    success: function (data) {
+                        if (data == true) {
+                            alert("成功创建用户");
+                        } else
+                            alert("创建失败，检查输入信息");
+                        //请求成功时处理
+                    },
+                    complete: function () {
+                        //请求完成的处理
+                    },
+                    error: function () {
+                        //请求出错处理
+                    }
+                });
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+    <div class="nano">
+        <div class="nano-content">
+            <ul>
+                <li class="active">
+                    <a class="sidebar-sub-toggle" href="../index.html"><i class="ti-home"></i> 首页<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                </li>
+
+                <li><a href="../deposit/index2.html"><i class="ti-money"></i> 存款业务</a></li>
+                <li><a href="../withdrawal/index2.html"><i class="ti-infinite"></i> 取款业务</a></li>
+                <li><a href="../query/index2.html"><i class="ti-server"></i> 交易查询</a></li>
+                <li><a href="../transfer/index2.html"><i class="ti-share"></i> 转账业务</a></li>
+                <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-stamp"></i>职员管理<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="../staff/getAllStaff2.html">所有职员</a></li>
+                        <li><a href="../staff/addstaff2.html">添加职员</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-user"></i>用户管理<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="../user/index2.html">所有用户</a></li>
+                        <li><a href="../user/adduser2.html">添加用户</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-harddrives"></i>账户管理<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="../account/index2.html">所有账户</a></li>
+                        <li><a href="../account/addaccount2.html">添加账户</a></li>
+                    </ul>
+                </li>
+
+                <li><a><i class="ti-close"></i>注销</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /# sidebar -->
+<div class="header">
+    <div class="pull-left">
+        <div class="logo">
+            <a href="index.html">
+                <span style="font-size: 1.5em;font-weight: 600;">银行后台分布式管理</span>
+            </a>
+        </div>
+        <div class="hamburger sidebar-toggle">
+            <span class="ti-menu"></span>
+        </div>
+    </div>
+    <div class="pull-right p-r-15">
+        <ul>
+        </ul>
+    </div>
+</div>
+
+<!-- END chat Sidebar-->
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 p-0">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h1>取款业务</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+                <div class="col-lg-4 p-0">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li ><a class="sidebar-sub-toggle" href="../index.html">Home</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+            </div>
+            <!-- /# row -->
+            <div class="main-content">
+                <div class="row">
+
+
+                    <div class="card alert" style="margin: 15px 100px 15px 100px;">
+                        <div class="card-header">
+
+                            <div class="card-header-right-icon">
+                                <ul>
+                                    <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                    <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown"
+                                                                         aria-haspopup="true" aria-expanded="true"
+                                                                         role="link"></i>
+                                        <ul class="card-option-dropdown dropdown-menu">
+                                            <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+                                            <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+                                            <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+                                            <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form role="form">
+                                <div class="form-group">
+
+                                    <h4>账号：</h4>    <input type="text" id="accountId" class="form-control"
+                                                           placeholder="账号"><br>
+                                    <h4>金额：</h4>    <input type="text" id="withdrawalsvalue" class="form-control"
+                                                           placeholder="金额"><br>
+                                    <h4>密码：</h4>   <input type="password" id="password" class="form-control"
+                                                          placeholder="密码"><br>
+                                    <button id="submit" class="btn btn-success btn-rounded m-b-10 m-l-5"
+                                            style="width: 110px;font-size: 1.2em;">提交
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="card-body">
+                            <button id="getuser" class="btn btn-warning btn-rounded m-b-10 m-l-5">获取所有账户</button>
+                            <br>
+                            <ul id="ul1">
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+
+                </div><!-- /# row -->
+            </div>
+            <!-- /# main content -->
+        </div>
+
+    </div>
+    <!-- /# main -->
+</div>
+<!-- /# content wrap -->
+
+<!-- jquery vendor -->
+<script src="../test/assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../test/assets/js/bootstrap.min.js"></script>
+<script>$("#nav").load("/nav.html")</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var siteid = localStorage.getItem("siteid");
+        var staffId = localStorage.getItem("staffid");
+        $("#getuser").on('click', function () {
+
+            $.ajax({
+                url: "/accountsum/getall",    //请求的url地址
+                dataType: "json",   //返回格式为json
+                async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                //data:{"id":"value"},    //参数值
+                type: "GET",   //请求方式
+                beforeSend: function () {
+                    //请求前的处理
+                },
+                success: function (data) {
+                    $("#ul1").empty()
+                    for (var i = 0; i < data.length; i++) {
+                        $("#ul1").append("<li>" + data[i].accountId + "</li>");
+                    }
+                    //请求成功时处理
+                },
+                complete: function () {
+                    //请求完成的处理
+                },
+                error: function () {
+                    //请求出错处理
+                }
+            });
+        });
+
+        $("#submit").on('click', function () {
+            var accountId = $("#accountId").val();
+            var withdrawalsvalue = $("#withdrawalsvalue").val();
+            var password = $("#password").val();
+            var data = {
+                "accountId": accountId,
+                "withdrawalsvalue": withdrawalsvalue,
+                "siteId": siteid,
+                "staffId": staffId,
+                "password": password
+            };
+            var logindata = {
+                "accountId": accountId,
+                "password": password,
+                "siteId": siteid
+            };
+            $.ajax({
+                url: "/account/islogin",    //请求的url地址
+                dataType: "json",   //返回格式为json
+                async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                contentType: "application/json",
+                data: JSON.stringify(logindata),    //参数值
+                type: "POST",   //请求方式
+                beforeSend: function () {
+                    //请求前的处理
+                },
+                success: function (res) {
+                    if (res) {
+                        $.ajax({
+                            url: "/withdrawal/addwithdrawal",    //请求的url地址
+                            dataType: "json",   //返回格式为json
+                            async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                            contentType: "application/json",
+                            data: JSON.stringify(data),    //参数值
+                            type: "POST",   //请求方式
+                            beforeSend: function () {
+                                //请求前的处理
+                            },
+                            success: function (res2) {
+                                if (res2) {
+                                    window.alert("取款成功");
+                                } else {
+                                    window.alert("取款失败");
+                                }
+
+
+                                //请求成功时处理
+                            },
+                            complete: function () {
+                                //请求完成的处理
+                            },
+                            error: function () {
+                                //请求出错处理
+                            }
+                        });
+                    } else {
+                        window.alert("密码错误");
+                    }
+
+
+                    //请求成功时处理
+                },
+                complete: function () {
+                    //请求完成的处理
+                },
+                error: function () {
+                    //请求出错处理
+                }
+            });
+
+
+        });
+    });
+
+</script>
+<script src="../assets/js/lib/jquery.nanoscroller.min.js"></script>
+<!-- nano scroller -->
+<script src="../assets/js/lib/sidebar.js"></script>
+<!-- sidebar -->
+<script src="../assets/js/lib/bootstrap.min.js"></script>
+<!-- bootstrap -->
+<script src="../assets/js/lib/mmc-common.js"></script>
+<script src="../assets/js/lib/mmc-chat.js"></script>
+<!--  Chart js -->
+<script src="../assets/js/lib/chart-js/Chart.bundle.js"></script>
+<script src="../assets/js/lib/chart-js/chartjs-init.js"></script>
+<!-- // Chart js -->
+<!--  Datamap -->
+<script src="../assets/js/lib/datamap/d3.min.js"></script>
+<script src="../assets/js/lib/datamap/topojson.js"></script>
+<script src="../assets/js/lib/datamap/datamaps.world.min.js"></script>
+<script src="../assets/js/lib/datamap/datamap-init.js"></script>
+<script src="../assets/lib/lobipanel/js/lobipanel.js"></script>
+<!-- // Datamap -->
+<script src="../assets/js/scripts.js"></script>
+<!-- scripit init-->
+<script>
+    $(document).ready(function () {
+        $('#lobipanel-custom-control').lobiPanel({
+            reload: false,
+            close: false,
+            editTitle: false
+        });
+    });
+</script>
+</body>
+
+</html>

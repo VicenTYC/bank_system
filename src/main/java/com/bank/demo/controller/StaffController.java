@@ -48,13 +48,13 @@ public class StaffController {
 
     @GetMapping(value = "/getStaffByStaffId/{Sid}")
     public Staff getStaffByStaffId(@PathVariable String Sid){
-
         return staffRepository.findByStaffId(Sid);
     }
 
     @GetMapping(value = "/getStaffBySiteId/{Sid}")
     public List<Staff> getUserByUid(@PathVariable Integer Sid){
-        return staffRepository.findByStaffSite(Sid);
+        List<Staff> staffs =staffRepository.findByStaffSite(Sid);
+        return staffs;
     }
 
     @GetMapping(value = "/getStaffByPhone/{sphone}")

@@ -41,7 +41,7 @@ public class AccountController {
         account.setAcconutId(DataTest.makeAccountid(accountBean.siteId));
         account.setAccountBalance(BigDecimal.valueOf(0));
         account.setUserId(accountBean.userId);
-        account.setSiteId(accountBean.siteId);
+        account.setSiteId(accountBean.siteId==null?0:accountBean.siteId);
         account.setPassword(DataTest.getMD5(accountBean.password));
         accountRepository.save(account);
 
@@ -56,12 +56,13 @@ public class AccountController {
     }
     @GetMapping(value ="/getAllAccount" )
     public List<Account> getAllAccount(){
-        return accountRepository.findAll();
+        List<Account> accounts = accountRepository.findAll();
+        return accounts;
     }
 
     @GetMapping(value = "/getaccount/{siteid}")
     public List<Account> getaccountbyid(@PathVariable Integer siteid){
-        if(siteid==0){
+        if(siteid==0||siteid==null){
             return getAllAccount();
         }
         return accountRepository.findBySiteId(siteid);

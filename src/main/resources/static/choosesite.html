@@ -14,11 +14,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="jquery-3.3.1.js"></script>
     <script type="text/javascript">
-
         $(document).ready(function () {
             localStorage.setItem("siteid",10);
             localStorage.setItem("staffid",0);
-
 
             $("#one").on('click',function () {
                 console.log("1");
@@ -43,13 +41,14 @@
                         async:true,//请求是否异步，默认为异步，这也是ajax重要特性
                         contentType:"application/json",
                         type:"GET",   //请求方式
-                        //data:JSON.stringify(data),    //参数值
+                       // data:JSON.stringify(data),    //参数值
                         beforeSend:function(){
                             //请求前的处理
                         },
                         success:function(data){
                             if(data!=null)
                             {
+                                console.log(data);
                                 DisplayListItems(data);
                                 $("a.tra").on('click',function () {
                                     var s=$(this).html();
@@ -61,7 +60,11 @@
                             else
                                 alert("查询失败");
                             //请求成功时处理
+                        },
+                        error:function(){
+                            console.log("error");
                         }
+
                     });
                     function DisplayListItems(list) {
                         $.each(list, function(index, element) {

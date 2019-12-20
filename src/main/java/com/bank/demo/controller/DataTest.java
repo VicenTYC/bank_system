@@ -69,6 +69,8 @@ public class DataTest {
         //获取三位随机数
         int ran=(int) ((Math.random()*9+1)*100);
         //要是一段时间内的数据连过大会有重复的情况，所以做以下修改
+        if(siteid==null)
+            return time+info.substring(1, info.length())+ran;
         return time+info.substring(2, info.length())+ran+siteid;
     }
 

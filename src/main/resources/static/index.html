@@ -1,71 +1,276 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
-    <!-- Bootstrap Styles-->
-    <link href="test/assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link href="test/assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-    <link href="test/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <!-- Custom Styles-->
-    <link href="test/assets/css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+    <link href="assets/fontAwesome/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="assets/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/lib/mmc-chat.css" rel="stylesheet"/>
+    <link href="assets/css/lib/sidebar.css" rel="stylesheet">
+    <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/lib/nixon.css" rel="stylesheet">
+    <link href="assets/lib/lobipanel/css/lobipanel.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-<div id="wrapper">
-    <div id="nav"></div>
-    <!-- /. NAV SIDE  -->
-    <div id="page-wrapper">
-        <div id="page-inner">
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+    <div class="nano">
+        <div class="nano-content">
+            <ul>
+                <li class="active">
+                    <a class="sidebar-sub-toggle" href="/index3.html"><i class="ti-home"></i> 首页<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                </li>
 
 
+                <li><a href="../deposit/index2.html"><i class="ti-money"></i> 存款业务</a></li>
+                <li><a href="../withdrawal/index2.html"><i class="ti-infinite"></i> 取款业务</a></li>
+                <li><a href="../query/index2.html"><i class="ti-server"></i> 交易查询</a></li>
+                <li><a href="../transfer/index2.html"><i class="ti-share"></i> 转账业务</a></li>
+                <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-stamp"></i>职员管理<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="../staff/getAllStaff2.html">所有职员</a></li>
+                        <li><a href="../staff/addstaff2.html">添加职员</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-user"></i>用户管理<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="../user/index2.html">所有用户</a></li>
+                        <li><a href="../user/adduser2.html">添加用户</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-harddrives"></i>账户管理<span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="../account/index2.html">所有账户</a></li>
+                        <li><a href="../account/addaccount2.html">添加账户</a></li>
+                    </ul>
+                </li>
+
+                <li><a><i class="ti-close"></i>注销</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /# sidebar -->
+<div class="header">
+    <div class="pull-left">
+        <div class="logo">
+            <a href="index3.html">
+                <span style="font-size: 1.5em;font-weight: 600;">银行后台分布式管理</span>
+            </a>
+        </div>
+        <div class="hamburger sidebar-toggle">
+            <span class="ti-menu"></span>
+        </div>
+    </div>
+    <div class="pull-right p-r-15">
+        <ul><button id="getuser" class="btn btn-danger btn-rounded m-b-10 m-l-5"><a href="choosesite2.html" style="color: white;font-size: 1.2em;">登录</a></button>
+        </ul>
+    </div>
+</div>
+
+<!-- END chat Sidebar-->
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="page-header">
-                        银行业务管理系统 <small>分布式</small>
-                    </h1>
-
+                <div class="col-lg-8 p-0">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h1>首页</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+                <div class="col-lg-4 p-0">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li ><a class="sidebar-sub-toggle" href="../index2.html">Home</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+            </div>
+            <!-- /# row -->
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="stat-widget-two">
+                                <div class="widget-icon color-1">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-text">今日流水</div>
+                                    <div class="stat-digit"><i class="fa fa-dollar-sign"></i>850(万)</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="stat-widget-two">
+                                <div class="widget-icon color-2">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-text">存款进账</div>
+                                    <div class="stat-digit"><i class="fa fa-dollar-sign"></i>78(万)</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="78"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="stat-widget-two">
+                                <div class="widget-icon color-3">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-text">取款出账</div>
+                                    <div class="stat-digit"><i class="fa fa-dollar-sign"></i> 50(万)</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="stat-widget-two">
+                                <div class="widget-icon color-4">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-text">访问量</div>
+                                    <div class="stat-digit"> 6</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="6"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 12%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card alert">
+                            <div class="card-header">
+                                <h4>流水趋势</h4>
+                                <div class="card-header-right-icon">
+                                    <ul>
+                                        <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                        <li class="card-collapse"><i class="fa fa-window-restore"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sales-chart  card-content">
+                                <canvas id="sales-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-6">
+                        <div class="card alert">
+                            <div class="card-header">
+                                <h4>站点分布</h4>
+                                <div class="card-header-right-icon">
+                                    <ul>
+                                        <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                        <li class="card-collapse"><i class="fa fa-window-restore"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="datamap card-content">
+                                <div id="world-datamap"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <div class="row">
                 </div>
             </div>
-
-
-            <!-- /. ROW  -->
+            <!-- /# main content -->
         </div>
-        <!-- /. PAGE INNER  -->
+        <!-- /# container-fluid -->
     </div>
-    <!-- /. PAGE WRAPPER  -->
+    <!-- /# main -->
 </div>
-<!-- /. WRAPPER  -->
-<!-- JS Scripts-->
-<!-- jQuery Js -->
-<script src="test/assets/js/jquery-1.10.2.js"></script>
-<script>$("#nav").load("/nav.html")</script>
-<!-- Bootstrap Js -->
-<script src="test/assets/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Js -->
-<script src="test/assets/js/jquery.metisMenu.js"></script>
-<!-- Morris Chart Js -->
-<script src="test/assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="test/assets/js/morris/morris.js"></script>
-
-
-<script src="test/assets/js/easypiechart.js"></script>
-<script src="test/assets/js/easypiechart-data.js"></script>
-
-<script src="test/assets/js/Lightweight-Chart/jquery.chart.js"></script>
-
-<!-- Custom Js -->
-<script src="test/assets/js/custom-scripts.js"></script>
-
-
+<!-- /# content wrap -->
+<script src="assets/js/lib/jquery.min.js"></script>
+<!-- jquery vendor -->
+<script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
+<!-- nano scroller -->
+<script src="assets/js/lib/sidebar.js"></script>
+<!-- sidebar -->
+<script src="assets/js/lib/bootstrap.min.js"></script>
+<!-- bootstrap -->
+<script src="assets/js/lib/mmc-common.js"></script>
+<script src="assets/js/lib/mmc-chat.js"></script>
+<!--  Chart js -->
+<script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
+<script src="assets/js/lib/chart-js/chartjs-init.js"></script>
+<!-- // Chart js -->
+<!--  Datamap -->
+<script src="assets/js/lib/datamap/d3.min.js"></script>
+<script src="assets/js/lib/datamap/topojson.js"></script>
+<script src="assets/js/lib/datamap/datamaps.world.min.js"></script>
+<script src="assets/js/lib/datamap/datamap-init.js"></script>
+<script src="assets/lib/lobipanel/js/lobipanel.js"></script>
+<!-- // Datamap -->
+<script src="assets/js/scripts.js"></script>
+<!-- scripit init-->
+<script>
+    $(document).ready(function () {
+        $('#lobipanel-custom-control').lobiPanel({
+            reload: false,
+            close: false,
+            editTitle: false
+        });
+    });
+</script>
 </body>
 
 </html>
