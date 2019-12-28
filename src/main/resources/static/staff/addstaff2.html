@@ -144,6 +144,7 @@
                                 <div class="form-group">
                                     <h4>职员姓名：</h4><input type="text" id="sName" class="form-control" placeholder="职员姓名"><br>
                                     <h4>电话号码：</h4><input type="text" id="sPhone" class="form-control" placeholder="电话号码"><br>
+                                    <h4>密码：</h4><input type="text" id="sPwd" class="form-control" placeholder="密码"><br>
                                     <button id="submit" class="btn btn-success btn-rounded m-b-10 m-l-5" style="width: 110px;font-size: 1.2em;">提交</button>
                                 </div>
                             </form>
@@ -215,11 +216,13 @@
         $("#submit").on('click',function () {
             var sName=$("#sName").val();
             var sPhone=$("#sPhone").val();
+            var sPwd = $("#sPwd").val();
             var sSite=siteid;
             var data={
                 "sName":sName,
                 "sPhone":sPhone,
-                "sSite":sSite
+                "sSite":sSite,
+                "sPwd":sPwd
             };
             $.ajax({
                 url:"/staff/addStaff",    //请求的url地址

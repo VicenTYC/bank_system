@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/staff")
@@ -35,6 +37,7 @@ public class StaffController {
         staff.setStaffName(staffBean.sName);
         staff.setStaffPhone(staffBean.sPhone);
         staff.setStaffSite(staffBean.sSite);
+        staff.setStaffPwd(DataTest.getMD5(staffBean.sPwd));
         staffRepository.save(staff);
         return true;
     }
@@ -44,7 +47,24 @@ public class StaffController {
         return staffRepository.findAll();
     }
 
-
+    @RequestMapping("/verifyPwd")
+    @ResponseBody
+    public Map<String,String> verifyPwd(String staffId, String staffPwd){
+        Map res = new HashMap<String,String>();
+        if(staffId==null||staffPwd==null)
+            res.put("resVal","1");
+        String id=staffId;
+        Staff account = staffRepository.findByStaffId(id);
+        String pwd=DataTest.getMD5(staffPwd);
+        System.out.println(pwd);
+        if(pwd.equals(account.getStaffPwd()))
+        {
+            res.put("resVal","0");
+            res.put("staffName",account.getStaffName());
+        }
+        else res.put("resVal","1");
+        return res;
+    }
 
     @GetMapping(value = "/getStaffByStaffId/{Sid}")
     public Staff getStaffByStaffId(@PathVariable String Sid){

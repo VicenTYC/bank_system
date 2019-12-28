@@ -26,6 +26,7 @@
     <link href="assets/css/lib/nixon.css" rel="stylesheet">
     <link href="assets/lib/lobipanel/css/lobipanel.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -86,7 +87,8 @@
         </div>
     </div>
     <div class="pull-right p-r-15">
-        <ul><button id="getuser" class="btn btn-danger btn-rounded m-b-10 m-l-5"><a href="choosesite2.html" style="color: white;font-size: 1.2em;">登录</a></button>
+        <ul><button id="getuser" class="btn btn-danger btn-rounded m-b-10 m-l-5" style="margin-top: 9%;">
+                <a href="choosesite2.html" style="color: white;font-size: 1.2em;">登录</a></button>
         </ul>
     </div>
 </div>
@@ -108,7 +110,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li ><a class="sidebar-sub-toggle" href="../index2.html">Home</a></li>
+                                <li><a class="sidebar-sub-toggle" href="../index.html">Home</a></li>
                             </ol>
                         </div>
                     </div>
@@ -239,8 +241,21 @@
     <!-- /# main -->
 </div>
 <!-- /# content wrap -->
-<script src="assets/js/lib/jquery.min.js"></script>
+
 <!-- jquery vendor -->
+<script src="assets/js/lib/jquery.min.js"></script>
+<script>
+    var staffid = localStorage.getItem("staffid");
+    $("#getuser").empty();
+    if (staffid == null||staffid=='0') {
+        var login = '<a href="choosesite2.html" style="color: white;font-size: 1.2em;">登录</a></button>';
+        $("#getuser").append(login);
+    } else {
+        var htmlid = '<span style="color: white;font-size: 1.2em;">' + localStorage.getItem("staffname");
+        +"</span>";
+        $("#getuser").append(htmlid);
+    }
+</script>
 <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
 <!-- nano scroller -->
 <script src="assets/js/lib/sidebar.js"></script>

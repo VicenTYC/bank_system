@@ -11,11 +11,14 @@ public class Staff {
     @Column(length = 8)
     private String staffName;
 
-    @Column(updatable = false,length = 2)
+    @Column(updatable = false, length = 2)
     private Integer staffSite;
 
     @Column(length = 11)
     private String staffPhone;
+
+    @Column(length = 32)
+    private String staffPwd;
 
     public String getStaffId() {
         return staffId;
@@ -48,4 +51,8 @@ public class Staff {
     public void setStaffPhone(String staffPhone) {
         this.staffPhone = staffPhone;
     }
+
+    public String getStaffPwd() {return staffPwd; }
+
+    public void setStaffPwd(String staffPwd) { this.staffPwd = staffPwd;  }
 }

@@ -198,14 +198,20 @@
                 $("#ul1").empty()
                 for(var i=0;i<data.length;i++)
                 {
-                    $("#ul1").append(
-                        "<tr class=\"gradeU\">"+
+                    var site="";
+                    if(data[i].staffSite==0)
+                            site = "总行";
+                    else if(data[i].staffSite==1)
+                        site = "分行一";
+                    else if(data[i].staffSite==2)
+                        site = "分行二";
+                    var html = "<tr class=\"gradeU\">"+
                         "<td>"+data[i].staffId+"</td>"
                         +"<td>"+data[i].staffName+"</td>"
                         +"<td>"+data[i].staffPhone+"</td>"
-                        +"<td>"+data[i].staffSite+"</td>"
+                        +"<td>"+site+"</td>"
                         +"</tr>"
-                    );
+                    $("#ul1").append(html);
                 }
                 //请求成功时处理
             },

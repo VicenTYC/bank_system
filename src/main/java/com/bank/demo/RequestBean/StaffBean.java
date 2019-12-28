@@ -6,4 +6,6 @@ public class StaffBean {
     public String sPhone;
 
     public Integer sSite;
+
+    public String sPwd;
 }
