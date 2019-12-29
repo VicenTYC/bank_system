@@ -68,7 +68,7 @@
                     </ul>
                 </li>
 
-                <li><a><i class="ti-close"></i>注销</a></li>
+                <li><a id="exit"><i class="ti-close"></i>注销</a></li>
             </ul>
         </div>
     </div>
@@ -172,7 +172,14 @@
 <!-- /# content wrap -->
 <script src="../test/assets/js/jquery-1.10.2.js"></script>
 <!-- Bootstrap Js -->
-<script src="../test/assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lib/jquery.min.js"></script>
+<script>
+    $("#exit").on('click',function () {
+        localStorage.removeItem("staffid");
+        localStorage.removeItem("staffname");
+        localStorage.removeItem("siteid");
+    });
+</script>
 <script>$("#nav").load("/nav.html")</script>
 <script type="text/javascript">
     $(document).ready(function () {

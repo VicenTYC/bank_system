@@ -30,52 +30,54 @@
     <script src="../test/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var siteid=localStorage.getItem("siteid");
-            var url="";
-            if(siteid==0){
-                url="getallsummary"
-            }else if(siteid==null){
-                url="getallsummary"
+            var siteid = localStorage.getItem("siteid");
+            var url = "";
+            var ifInquire = true;
+            if (siteid == 0) {
+                url = "getallsummary"
+            } else if (siteid == null) {
+                window.alert("请登录！！");
+                ifInquire = false;
+            } else {
+                url = "getbysiteid/" + siteid;
             }
-            else{
-                url="getbysiteid/"+siteid;
-            }
-            $.ajax({
-                url:"/summary/"+url,    //请求的url地址
-                dataType:"json",   //返回格式为json
-                async:true,//请求是否异步，默认为异步，这也是ajax重要特性
-                //data:{"id":"value"},    //参数值
-                type:"GET",   //请求方式
-                beforeSend:function(){
-                    //请求前的处理
-                },
-                success:function(data){
-                    console.log(data)
-                    $("#ul1").empty()
-                    for(var i=0;i<data.length;i++)
-                    {
-                        $("#ul1").append(
-                            "<tr >"+
-                            "<td>"+data[i].summaryId+"</td>"
-                            +"<td>"+data[i].accountIdFrom+"</td>"
-                            +"<td>"+data[i].accountIdTo+"</td>"
-                            +"<td>"+data[i].date+"</td>"
-                            +"<td>"+data[i].siteId+"</td>"
-                            +"<td>"+data[i].type+"</td>"
-                            +"<td>"+data[i].value+"</td>"
-                            +"</tr>"
-                        );
+            if (ifInquire) {
+                $.ajax({
+                    url: "/summary/" + url,    //请求的url地址
+                    dataType: "json",   //返回格式为json
+                    async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                    //data:{"id":"value"},    //参数值
+                    type: "GET",   //请求方式
+                    beforeSend: function () {
+                        //请求前的处理
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        $("#ul1").empty()
+                        for (var i = 0; i < data.length; i++) {
+                            $("#ul1").append(
+                                "<tr >" +
+                                "<td>" + data[i].summaryId + "</td>"
+                                + "<td>" + data[i].accountIdFrom + "</td>"
+                                + "<td>" + data[i].accountIdTo + "</td>"
+                                + "<td>" + data[i].date + "</td>"
+                                + "<td>" + data[i].siteId + "</td>"
+                                + "<td>" + data[i].type + "</td>"
+                                + "<td>" + data[i].value + "</td>"
+                                + "</tr>"
+                            );
+                        }
+                        //请求成功时处理
+                    },
+                    complete: function () {
+                        //请求完成的处理
+                    },
+                    error: function () {
+                        //请求出错处理
                     }
-                    //请求成功时处理
-                },
-                complete:function(){
-                    //请求完成的处理
-                },
-                error:function(){
-                    //请求出错处理
-                }
-            });
-            ;
+                });
+                ;
+            }
         });
 
     </script>
@@ -121,7 +123,7 @@
                     </ul>
                 </li>
 
-                <li><a><i class="ti-close"></i>注销</a></li>
+                <li><a id="exit"><i class="ti-close"></i>注销</a></li>
             </ul>
         </div>
     </div>
@@ -161,7 +163,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li ><a class="sidebar-sub-toggle" href="../index.html">Home</a></li>
+                                <li><a class="sidebar-sub-toggle" href="../index.html">Home</a></li>
                             </ol>
                         </div>
                     </div>
@@ -171,49 +173,51 @@
             <!-- /# row -->
             <div class="main-content">
                 <div class="row">
-                        <div class="card-header">
+                    <div class="card-header">
 
-                            <div class="card-header-right-icon">
-                                <ul>
-                                    <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-                                    <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-                                        <ul class="card-option-dropdown dropdown-menu">
-                                            <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
-                                            <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
-                                            <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-                                            <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
-                                        </ul>
-                                    </li>
+                        <div class="card-header-right-icon">
+                            <ul>
+                                <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown"
+                                                                     aria-haspopup="true" aria-expanded="true"
+                                                                     role="link"></i>
+                                    <ul class="card-option-dropdown dropdown-menu">
+                                        <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+                                        <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+                                        <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+                                        <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+                                    </ul>
+                                </li>
 
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
-                        <div class="card-body">
-                            <table class="table table-responsive table-hover ">
-                                <thead>
-                                <tr>
-                                    <th>交易单号</th>
-                                    <th>转出方</th>
-                                    <th>转入方</th>
-                                    <th>交易时间</th>
-                                    <th>交易站点</th>
-                                    <th>交易类型</th>
-                                    <th>交易金额</th>
-                                </tr>
-                                </thead>
-                                <tbody id="ul1">
-                                <tr >
-                                    <td>Other browsers</td>
-                                    <td>All others</td>
-                                    <td>-</td>
-                                    <td >-</td>
-                                    <td >U</td>
-                                    <td >U</td>
-                                    <td >U</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-responsive table-hover ">
+                            <thead>
+                            <tr>
+                                <th>交易单号</th>
+                                <th>转出方</th>
+                                <th>转入方</th>
+                                <th>交易时间</th>
+                                <th>交易站点</th>
+                                <th>交易类型</th>
+                                <th>交易金额</th>
+                            </tr>
+                            </thead>
+                            <tbody id="ul1">
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <!-- /# column -->
 
@@ -227,6 +231,13 @@
 <!-- /# content wrap -->
 
 <script src="../assets/js/lib/jquery.min.js"></script>
+<script>
+    $("#exit").on('click', function () {
+        localStorage.removeItem("staffid");
+        localStorage.removeItem("staffname");
+        localStorage.removeItem("siteid");
+    });
+</script>
 <!-- jquery vendor -->
 <script src="../assets/js/lib/jquery.nanoscroller.min.js"></script>
 <!-- nano scroller -->

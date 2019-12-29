@@ -66,7 +66,7 @@
                     </ul>
                 </li>
 
-                <li><a><i class="ti-close"></i>注销</a></li>
+                <li><a id="exit"><i class="ti-close"></i>注销</a></li>
             </ul>
         </div>
     </div>
@@ -243,6 +243,14 @@
 
 <!-- jquery vendor -->
 <script src="../assets/js/lib/jquery.nanoscroller.min.js"></script>
+<script src="../assets/js/lib/jquery.min.js"></script>
+<script>
+    $("#exit").on('click',function () {
+        localStorage.removeItem("staffid");
+        localStorage.removeItem("staffname");
+        localStorage.removeItem("siteid");
+    });
+</script>
 <!-- nano scroller -->
 <script src="../assets/js/lib/sidebar.js"></script>
 <!-- sidebar -->

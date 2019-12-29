@@ -27,6 +27,13 @@
     <link href="../assets/lib/lobipanel/css/lobipanel.min.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
     <script src="jquery-3.3.1.js"></script>
+    <script>
+        $("#exit").on('click',function () {
+            localStorage.removeItem("staffid");
+            localStorage.removeItem("staffname");
+            localStorage.removeItem("siteid");
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             localStorage.setItem("siteid",10);

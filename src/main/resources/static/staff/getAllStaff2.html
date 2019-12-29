@@ -68,7 +68,7 @@
                     </ul>
                 </li>
 
-                <li><a><i class="ti-close"></i>注销</a></li>
+                <li><a id="exit"><i class="ti-close"></i>注销</a></li>
             </ul>
         </div>
     </div>
@@ -108,7 +108,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li ><a class="sidebar-sub-toggle" href="../index.html">Home</a></li>
+                                <li><a class="sidebar-sub-toggle" href="../index.html">Home</a></li>
                             </ol>
                         </div>
                     </div>
@@ -126,7 +126,9 @@
                             <div class="card-header-right-icon">
                                 <ul>
                                     <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-                                    <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
+                                    <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown"
+                                                                         aria-haspopup="true" aria-expanded="true"
+                                                                         role="link"></i>
                                         <ul class="card-option-dropdown dropdown-menu">
                                             <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
                                             <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
@@ -171,58 +173,68 @@
 <script src="../test/assets/js/jquery-1.10.2.js"></script>
 <!-- Bootstrap Js -->
 <script src="../test/assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lib/jquery.min.js"></script>
+<script>
+    $("#exit").on('click',function () {
+        localStorage.removeItem("staffid");
+        localStorage.removeItem("staffname");
+        localStorage.removeItem("siteid");
+    });
+</script>
 <script>$("#nav").load("/nav.html")</script>
 <script type="text/javascript">
     $(document).ready(function () {
-        var siteid=localStorage.getItem("siteid");
-        var url="";
-        if(siteid==0){
-            url="getAllStaff"
-        }else if (siteid==null) {
-            url="getAllStaff"
+        var siteid = localStorage.getItem("siteid");
+        var ifInquire = true;
+        var url = "";
+        if (siteid == 0) {
+            url = "getAllStaff"
+        } else if (siteid == null) {
+            alert("请登录！");
+            ifInquire = false;
+        } else {
+            url = "getStaffBySiteId/" + siteid;
         }
-        else{
-            url="getStaffBySiteId/"+siteid;
-        }
-        $.ajax({
-            url:"/staff/"+url,    //请求的url地址
-            dataType:"json",   //返回格式为json
-            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
-            //data:{"id":"value"},    //参数值
-            type:"GET",   //请求方式
-            beforeSend:function(){
-                //请求前的处理
-            },
-            success:function(data){
-                console.log(data)
-                $("#ul1").empty()
-                for(var i=0;i<data.length;i++)
-                {
-                    var site="";
-                    if(data[i].staffSite==0)
+        if (ifInquire) {
+            $.ajax({
+                url: "/staff/" + url,    //请求的url地址
+                dataType: "json",   //返回格式为json
+                async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                //data:{"id":"value"},    //参数值
+                type: "GET",   //请求方式
+                beforeSend: function () {
+                    //请求前的处理
+                },
+                success: function (data) {
+                    console.log(data)
+                    $("#ul1").empty()
+                    for (var i = 0; i < data.length; i++) {
+                        var site = "";
+                        if (data[i].staffSite == 0)
                             site = "总行";
-                    else if(data[i].staffSite==1)
-                        site = "分行一";
-                    else if(data[i].staffSite==2)
-                        site = "分行二";
-                    var html = "<tr class=\"gradeU\">"+
-                        "<td>"+data[i].staffId+"</td>"
-                        +"<td>"+data[i].staffName+"</td>"
-                        +"<td>"+data[i].staffPhone+"</td>"
-                        +"<td>"+site+"</td>"
-                        +"</tr>"
-                    $("#ul1").append(html);
+                        else if (data[i].staffSite == 1)
+                            site = "分行一";
+                        else if (data[i].staffSite == 2)
+                            site = "分行二";
+                        var html = "<tr class=\"gradeU\">" +
+                            "<td>" + data[i].staffId + "</td>"
+                            + "<td>" + data[i].staffName + "</td>"
+                            + "<td>" + data[i].staffPhone + "</td>"
+                            + "<td>" + site + "</td>"
+                            + "</tr>"
+                        $("#ul1").append(html);
+                    }
+                    //请求成功时处理
+                },
+                complete: function () {
+                    //请求完成的处理
+                },
+                error: function () {
+                    //请求出错处理
                 }
-                //请求成功时处理
-            },
-            complete:function(){
-                //请求完成的处理
-            },
-            error:function(){
-                //请求出错处理
-            }
-        });
-        ;
+            });
+            ;
+        }
     });
 
 </script>

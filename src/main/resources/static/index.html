@@ -245,6 +245,13 @@
 <!-- jquery vendor -->
 <script src="assets/js/lib/jquery.min.js"></script>
 <script>
+    $("#exit").on('click',function () {
+        localStorage.removeItem("staffid");
+        localStorage.removeItem("staffname");
+        localStorage.removeItem("siteid");
+    });
+</script>
+<script>
     var staffid = localStorage.getItem("staffid");
     $("#getuser").empty();
     if (staffid == null||staffid=='0') {
@@ -255,12 +262,6 @@
         +"</span>";
         $("#getuser").append(htmlid);
     }
-    $("#exit").on('click',function () {
-        localStorage.removeItem("staffid");
-        localStorage.removeItem("staffname");
-        localStorage.removeItem("siteid");
-    });
-
 </script>
 <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
 <!-- nano scroller -->

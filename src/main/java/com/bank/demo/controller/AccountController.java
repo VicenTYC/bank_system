@@ -62,9 +62,11 @@ public class AccountController {
 
     @GetMapping(value = "/getaccount/{siteid}")
     public List<Account> getaccountbyid(@PathVariable Integer siteid){
-        if(siteid==0||siteid==null){
+        if(siteid==0){
             return getAllAccount();
         }
+        if(siteid==null)
+            return  null;
         return accountRepository.findBySiteId(siteid);
     }
 
@@ -74,6 +76,8 @@ public class AccountController {
             return false;
         String id=loginBean.accountId;
         Account account=accountRepository.findByAcconutId(id);
+        if (account==null)
+            return false;
         String pwd=DataTest.getMD5(loginBean.password);
         if(pwd.equals(account.getPassword()))
         {
