@@ -255,9 +255,12 @@
         +"</span>";
         $("#getuser").append(htmlid);
     }
-    $("#id").click(function () {
-        
-    })
+    $("#exit").on('click',function () {
+        localStorage.removeItem("staffid");
+        localStorage.removeItem("staffname");
+        localStorage.removeItem("siteid");
+    });
+
 </script>
 <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
 <!-- nano scroller -->
