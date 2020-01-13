@@ -4,7 +4,7 @@ Sql 文件夹下的 bank.sql 是建表的sql语句，在自己的MySQL中新建�
 文件夹 /src/main/resource/ 中的 application.yml 是配置文件，以下几行是数据库配置，根据自己的数据库配置好就行</br></br></br>
     url: jdbc:mysql://127.0.0.1:3306/bank?serverTimezone=GMT%2B8</br></br>
     username: root</br></br>
-    password: 123456</br></br>
+    password: </br></br>
     
     
     
